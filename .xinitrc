@@ -32,8 +32,6 @@ $HOME/.config/wpg/wp_init.sh
 sxhkd &
 $HOME/scripts/dwm-status.sh &
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
 ~/.fehbg
 xset led 3
 setxkbmap tr

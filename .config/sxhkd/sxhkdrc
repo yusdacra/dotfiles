@@ -10,6 +10,9 @@ alt + Return
 alt + {d, Tab}
 	rofi -show {drun, window}
 
+alt + p
+	bwmenu
+
 # volume settings
 {XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
 	amixer -D pulse sset Master {5%+, 5%-, toggle-mute} && $HOME/scripts/dwm-status.sh
