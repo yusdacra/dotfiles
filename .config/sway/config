@@ -1,3 +1,5 @@
+include "$HOME/.cache/wal/colors-sway"
+
 # Variable setting
 set $defaultmod Mod1
 set $up Up
@@ -11,7 +13,7 @@ font pango:Fira Sans 11
 
 ########## Autolaunch ##########
 input * xkb_layout "tr"
-output "*" bg ~/Resimler/wallpaper.jpg fill
+output "*" bg ~/Resimler/wallpaper fill
 
 ########## Keybindings ##########
 #bindsym $defaultmod+Shift+s exec swaylock # Easier locking
@@ -166,16 +168,12 @@ mode "resize" {
 bindsym $defaultmod+r mode "resize"
 
 bar {
-    swaybar_command waybar
+	swaybar_command swaybar
 }
 
 ########## Styling ##########
 
-client.focused          #d8fa3b #121212 #eeeeee #ff5757 #eeeeee
-client.focused_inactive #121212 #121212 #eeeeee #121212 #121212
-client.unfocused        #121212 #121212 #eeeeee #ff5757 #121212
-client.urgent           #ff5757 #121212 #eeeeee #555757 #121212
-client.background       #121212
+client.focused $color0 $background $foreground $color7 $background
 
 default_border none
 for_window [class="^.*"] border pixel 0

@@ -1,5 +1,5 @@
 call plug#begin('~/.local/nvim/plugged')
-Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree'
 Plug 'preservim/nerdtree'
 Plug 'ron-rs/ron.vim'
 Plug 'dart-lang/dart-vim-plugin'
@@ -13,7 +13,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jaredgorski/spacecamp'
+Plug 'dylanaraps/wal.vim'
 Plug 'Shougo/echodoc.vim'
 call plug#end()
 
@@ -22,7 +22,7 @@ set hidden
 " theming
 set number
 set relativenumber
-colorscheme spacecamp
+colorscheme wal
 hi LineNr ctermfg=NONE ctermbg=NONE
 hi CursorLineNr ctermfg=NONE ctermbg=NONE
 
@@ -48,7 +48,7 @@ nmap <silent> q :wq<CR>
 
 " airline settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'term'
+let g:airline_theme = 'wal'
 
 " echodoc settings
 let g:echodoc#enable_at_startup = 1
@@ -64,6 +64,7 @@ call deoplete#custom#source('LanguageClient',
 let g:LanguageClient_serverCommands = {
 \ 'rust': ['rust-analyzer'],
 \ }
+nnoremap <silent> <F5> :call LanguageClient_contextMenu()<CR>
 
 " NERDTree settings
 let g:NERDTreeWinPos = "right"
@@ -71,6 +72,11 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeQuitOnOpen = 1
 nmap <silent> f :NERDTreeToggle<CR>
+
+" Pear Tree settings
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
 
 " command settings
 " use ripgrep with fzf

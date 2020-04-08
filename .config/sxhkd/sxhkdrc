@@ -1,0 +1,26 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+alt + Return
+	alacritty
+
+# program launcher
+alt + {d, Tab}
+	rofi -show {drun, window}
+
+# volume settings
+{XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute}
+	amixer -D pulse sset Master {5%+, 5%-, toggle-mute} && $HOME/scripts/dwm-status.sh
+
+# media player
+{XF86AudioPlay, XF86AudioPrev, XF86AudioNext, XF86AudioStop}
+	playerctl {play-pause, previous, next, stop} && $HOME/scripts/dwm-status.sh
+
+alt + p
+	~/scripts/rofi-mpd.sh && $HOME/scripts/dwm-status.sh
+
+# make sxhkd reload its configuration files:
+alt + Escape
+	pkill -USR1 -x sxhkd

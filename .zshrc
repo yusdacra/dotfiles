@@ -70,6 +70,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(gitfast systemd colored-man-pages command-not-found per-directory-history tmux fzf cargo rust flutter thefuck)
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -80,6 +81,7 @@ setopt autocd notify
 unsetopt beep extendedglob nomatch
 # Syntax highlighting (but fast)
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+(cat $HOME/.config/wpg/sequences &)
 
 # Import aliases
 source ~/.aliases
