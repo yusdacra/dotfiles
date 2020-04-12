@@ -1,5 +1,5 @@
 call plug#begin('~/.local/nvim/plugged')
-Plug 'tmsvg/pear-tree'
+Plug 'rust-lang/rust.vim'
 Plug 'preservim/nerdtree'
 Plug 'ron-rs/ron.vim'
 Plug 'dart-lang/dart-vim-plugin'
@@ -71,12 +71,10 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeQuitOnOpen = 1
-nmap <silent> f :NERDTreeToggle<CR>
+nmap <silent> <leader>f :NERDTreeToggle<CR>
 
-" Pear Tree settings
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
+" rust.vim settings
+let g:rustfmt_autosave = 1
 
 " command settings
 " use ripgrep with fzf

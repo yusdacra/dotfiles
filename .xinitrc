@@ -27,13 +27,13 @@ if [ -f "/tmp/dwm-status.pid" ]; then
 	rm "/tmp/dwm-status.pid"
 fi
 
-$HOME/.config/wpg/wp_init.sh
-#compton --experimental-backends --config $HOME/.config/picom/picom.conf &
+picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 sxhkd &
 $HOME/scripts/dwm-status.sh &
 
 ~/.fehbg
 xset led 3
 setxkbmap tr
+$HOME/.config/wpg/wp_init.sh
 
 exec dwm

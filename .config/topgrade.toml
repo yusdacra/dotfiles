@@ -16,7 +16,7 @@ disable = ["go"]
 #only = ["system", "emacs"]
 
 # Do not ask to retry failed steps (default: false)
-#no_retry = true
+no_retry = true
 
 # Run inside tmux
 #run_in_tmux = true
@@ -43,7 +43,7 @@ disable = ["go"]
 #set_title = false
 
 # Cleanup temporary or old files
-#cleanup = true
+cleanup = true
 
 #[composer]
 #self_update = true

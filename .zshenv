@@ -1,11 +1,13 @@
+export CHROME_EXECUTABLE=chromium # for flutter web support
 export ANDROID_SDK_ROOT="$HOME/Belgeler/AndroidSdk"
+export ANDROID_HOME="$HOME/Belgeler/AndroidSdk"
 export PATH="$PATH:$HOME/Belgeler/flutter/bin"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.fzf/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
-export XDG_CURRENT_DESKTOP=Unity
 export EDITOR=nvim
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'

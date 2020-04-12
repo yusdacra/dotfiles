@@ -10,7 +10,7 @@ alt + Return
 alt + {d, Tab}
 	rofi -show {drun, window}
 
-alt + p
+alt + shift + p
 	bwmenu
 
 # volume settings
