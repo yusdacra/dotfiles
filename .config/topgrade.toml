@@ -1,9 +1,9 @@
 # Additional git repositories to pull
 git_repos = [
-    "~/Belgeler/Pywalfox",
-    "~/Belgeler/linux-tkg",
-    "~/Belgeler/veloren",
-    "~/Belgeler/pywal-discord",
+    "~/Belgeler/compile/Pywalfox",
+    "~/Belgeler/compile/linux-tkg",
+    "~/Belgeler/compile/veloren",
+    "~/Belgeler/compile/pywal-discord",
 ]
 
 # Don't pull the predefined git repos

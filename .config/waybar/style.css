@@ -1,199 +1,161 @@
+/* use the below line for opaque waybar */
+
+@import url("../../.cache/wal/colors-waybar.css");
+
+/* use the below line for semi-transparent waybar */
+
+/* @import url("../../.cache/wal/colors-custom-gtk3.css"); */
+
+
+
+/* get your icons from the link below */
+
+/* https://aur.archlinux.org/packages/ttf-material-design-icons-git/ */
+
+
+
 * {
+
     border: none;
+
     border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Fira Sans, Roboto, Noto Sans, Arial, sans-serif;
-    font-size: 13px;
+
+    font-family: Monoid, Material Design Icons;
+
+    font-size: 12px;
+
     min-height: 0;
+
 }
 
 window#waybar {
-    background-color: rgba(18, 18, 18, 0.7);
-    border-bottom: 0px none rgba(100, 114, 125, 0.5);
-    color: #d8fa3b;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
 
-window#waybar.hidden {
-    opacity: 0.0;
-}
+    background: @background;
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
+    color: @foreground;
 
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
 }
 
 #workspaces button {
+
     padding: 0 5px;
-    background-color: transparent;
-    color: #d8fa3b;
+
+    background: transparent;
+
+    color: @foreground;
+
 }
 
 #workspaces button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
-  background: transparent;
-  border: transparent;
-  padding: 0 3px;
+
+    box-shadow: inherit;
+
+    text-shadow: inherit;
+
 }
 
 #workspaces button.focused {
-    background-color: transparent;
-    border-top: 3px solid #d8fa3b;
+
+    background: @foreground;
+
+    color: @background
+
 }
 
-#workspaces button.urgent {
-    background-color: #d71a1a;
+#mode, #clock, #memory, #temperature, #network, #pulseaudio, #pulseaudio.muted, #pulseaudio.mic, #battery, #battery.charging, #mpd, #mpd.disconnected, #mpd.stopped, #mpd.paused {
+
+    padding: 0 0px;
+
+    margin: 0 0px;
+
+    background: transparent;
+
+    background-color: transparent;
+
+    color: @foreground;
+
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#mpd {
-    padding: 0 5px;
-    margin: 0 4px;
-    color: #d8fa3b;
-    background-color: transparent;
-}
-
-#clock {
-    color: #eeeeee;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#cpu {
-    color: #dd2222;
 }
 
 #memory {
-    color: #cf73e6;
-}
 
-#backlight {
-    background-color: #90b1b1;
-}
-
-#network { 
-    color: #57ba37;
-}
-
-#network.disconnected {
-    color: #d71a1a;
-}
-
-#pulseaudio {
-    color: #f0d50c;
-}
-
-#pulseaudio.muted {
-    color: #666666;
-}
-
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
 }
 
 #temperature {
-    background-color: #f0932b;
+
 }
 
-#temperature.critical {
-    background-color: #eb4d4b;
+#network {
+
 }
 
-#tray {
-    background-color: transparent;
+#clock {
+
 }
 
-#idle_inhibitor {
-    background-color: #2d3436;
+#pulseaudio {
+
 }
 
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+#pulseaudio.muted {
+
+}
+
+#pulseaudio.mic {
+
+}
+
+#battery {
+
+}
+
+#battery.charging {
+
 }
 
 #mpd {
-    color: #a9c1de; 
+    
 }
 
 #mpd.disconnected {
-    color: #d71a1a;
+
 }
 
 #mpd.stopped {
-    color: #666666;
+
 }
 
 #mpd.paused {
-    color: #666666;
+
+}
+
+@keyframes blink {
+
+    to {
+
+        color: @background;
+
+    }
+
+}
+
+#battery.warning:not(.charging) {
+
+    background: transparent;
+
+    color: @foreground;
+
+    animation-name: blink;
+
+    animation-duration: 0.5s;
+
+    animation-timing-function: linear;
+
+    animation-iteration-count: infinite;
+
+    animation-direction: alternate;
+
 }

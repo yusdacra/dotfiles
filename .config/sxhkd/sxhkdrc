@@ -4,7 +4,7 @@
 
 # terminal emulator
 alt + Return
-	alacritty
+	kitty
 
 # program launcher
 alt + {d, Tab}
@@ -19,7 +19,7 @@ alt + shift + p
 
 # media player
 {XF86AudioPlay, XF86AudioPrev, XF86AudioNext, XF86AudioStop}
-	playerctl {play-pause, previous, next, stop} && $HOME/scripts/dwm-status.sh
+	mpc {toggle, prev, next, stop} && $HOME/scripts/dwm-status.sh
 
 alt + p
 	~/scripts/rofi-mpd.sh && $HOME/scripts/dwm-status.sh

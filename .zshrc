@@ -81,7 +81,6 @@ setopt autocd notify
 unsetopt beep extendedglob nomatch
 # Syntax highlighting (but fast)
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-(cat $HOME/.config/wpg/sequences &)
 
 # Import aliases
 source ~/.aliases

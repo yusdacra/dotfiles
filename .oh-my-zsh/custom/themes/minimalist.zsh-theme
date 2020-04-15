@@ -2,7 +2,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
 	'%F{5}%b%F{3}|%F{1}%a%f '
 zstyle ':vcs_info:*' formats       \
-	'%F{5}%b%f '
+	'%F{8}%b%f '
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
 vcs_info_wrapper() {
@@ -12,5 +12,5 @@ vcs_info_wrapper() {
   fi
 }
 
-PROMPT=' %F{10}%1~%f '
+PROMPT=' %F{3}%1~%f '
 RPROMPT=$'$(vcs_info_wrapper)'

@@ -9,11 +9,11 @@ set $right Right
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Fira Sans 11
+font pango:Monoid 9
 
 ########## Autolaunch ##########
 input * xkb_layout "tr"
-output "*" bg ~/Resimler/wallpaper fill
+output "*" bg ~/Resimler/parsee.png fill
 
 ########## Keybindings ##########
 #bindsym $defaultmod+Shift+s exec swaylock # Easier locking
@@ -27,10 +27,10 @@ output "*" bg ~/Resimler/wallpaper fill
 #bindsym XF86MonBrightnessDown exec light -U 10 # Decrease Brightness
 
 ### Media Player ###
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioStop exec mpc stop
 
 ### Other ###
 bindsym Print exec grim
@@ -47,13 +47,13 @@ floating_modifier $defaultmod
 bindsym $defaultmod+Return exec kitty
 
 # kill focused window
-bindsym $defaultmod+Shift+q kill
+bindsym $defaultmod+q kill
 
 # start rofi (a program launcher)
 bindsym $defaultmod+d exec rofi -show drun
 bindsym $defaultmod+Tab exec ~/scripts/switch_window.py
 bindsym $defaultmod+p exec ~/scripts/rofi-mpd.sh
-bindsym $defaultmod+Shift+p exec ~/scripts/rofi-mpd-queue.sh
+bindsym $defaultmod+Shift+p exec bwmenu
 
 # change focus
 bindsym $defaultmod+$left focus left
@@ -140,11 +140,11 @@ bindsym $defaultmod+x move workspace to output right
 # reload the configuration file
 bindsym $defaultmod+Shift+c reload
 
-# restart sway inplace (preserves your layout/session, can be used to upgrade i3)
+# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
 bindsym $defaultmod+Shift+r restart
 
 # exit sway (logs you out of your X session)
-bindsym $defaultmod+Shift+e exit 
+bindsym $defaultmod+Shift+q exit 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -168,7 +168,7 @@ mode "resize" {
 bindsym $defaultmod+r mode "resize"
 
 bar {
-	swaybar_command swaybar
+	swaybar_command waybar
 }
 
 ########## Styling ##########
@@ -176,12 +176,12 @@ bar {
 client.focused $color0 $background $foreground $color7 $background
 
 default_border none
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 
 hide_edge_borders smart_no_gaps
 smart_borders no_gaps
 smart_gaps off
-gaps inner 8
+gaps inner 0
 gaps outer 0
 
 ########## Window management #########

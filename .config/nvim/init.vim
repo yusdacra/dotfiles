@@ -1,6 +1,5 @@
 call plug#begin('~/.local/nvim/plugged')
 Plug 'rust-lang/rust.vim'
-Plug 'preservim/nerdtree'
 Plug 'ron-rs/ron.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
@@ -13,7 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'dylanaraps/wal.vim'
+Plug 'deviantfero/wpgtk.vim'
 Plug 'Shougo/echodoc.vim'
 call plug#end()
 
@@ -22,7 +21,7 @@ set hidden
 " theming
 set number
 set relativenumber
-colorscheme wal
+colorscheme wpgtkAlt
 hi LineNr ctermfg=NONE ctermbg=NONE
 hi CursorLineNr ctermfg=NONE ctermbg=NONE
 
@@ -33,22 +32,15 @@ set mouse=a
 let g:mapleader = "."
 " Clear search matches with double escape
 nnoremap <silent> <Esc><Esc> :noh<CR>
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nmap <silent> <leader>t :enew<cr>
 " Move to the next buffer
-nmap <silent> <leader>l :bnext<CR>
+nnoremap <silent> <leader>l :bnext<CR>
 " Move to the previous buffer
-nmap <silent> <leader>h :bprevious<CR>
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nmap <silent> <leader>hq :bp <BAR> bd #<CR>
-" Save and quit
-nmap <silent> q :wq<CR>
+nnoremap <silent> <leader>h :bprevious<CR>
+nnoremap <leader>b :b 
 
 " airline settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'wal'
+let g:airline_theme = 'wpgtk'
 
 " echodoc settings
 let g:echodoc#enable_at_startup = 1
@@ -63,19 +55,22 @@ call deoplete#custom#source('LanguageClient',
 " LanguageClient settings
 let g:LanguageClient_serverCommands = {
 \ 'rust': ['rust-analyzer'],
+\ 'dart': ['$HOME/Belgeler/flutter/bin/cache/dart-sdk/bin/dart', '$HOME/Belgeler/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot', '--lsp'],
 \ }
-nnoremap <silent> <F5> :call LanguageClient_contextMenu()<CR>
-
-" NERDTree settings
-let g:NERDTreeWinPos = "right"
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 0
-let g:NERDTreeQuitOnOpen = 1
-nmap <silent> <leader>f :NERDTreeToggle<CR>
+nnoremap <silent> <leader>cm :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> <leader>def   :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>hov     :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <leader>imp   :call LanguageClient_textDocument_implementation()<CR>
+nnoremap <silent> <leader>td    :call LanguageClient_textDocument_typeDefinition()<CR>
+nnoremap <silent> <leader>ref   :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <leader>sym   :call LanguageClient_textDocument_documentSymbol()*<CR>
 
 " rust.vim settings
 let g:rustfmt_autosave = 1
 
+" vim-flutter settings
+let g:flutter_show_log_on_run = 0
+
 " command settings
 " use ripgrep with fzf
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --follow --glob "!.git/*,!target/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)

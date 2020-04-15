@@ -20,4 +20,7 @@ font:
 
   size: 8.0
 
-background_opacity: 0.8
+background_opacity: 1.0
+
+debug:
+  log_level: None
