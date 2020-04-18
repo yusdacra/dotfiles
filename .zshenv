@@ -11,5 +11,4 @@ export PATH="$PATH:$HOME/.fzf/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 export EDITOR=kak
-export PAGER=kak
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/* !target/*"'

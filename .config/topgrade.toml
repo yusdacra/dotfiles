@@ -2,8 +2,8 @@
 git_repos = [
     "~/Belgeler/compile/Pywalfox",
     "~/Belgeler/compile/linux-tkg",
-    "~/Belgeler/compile/veloren",
     "~/Belgeler/compile/pywal-discord",
+    "~/Belgeler/compile/rust-analyzer",
 ]
 
 # Don't pull the predefined git repos
