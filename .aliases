@@ -1,5 +1,7 @@
 alias ydl='youtube-dl --embed-thumbnail --extract-audio --audio-format mp3 --add-metadata'
-alias l='ls'
+alias l='exa'
+alias ls='exa'
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias btrfs-df='sudo btrfs fi usage /'
 alias hover-build-linux-appimage='sudo systemctl start docker && hover build linux-appimage && sudo systemctl stop docker'
+alias bat='bat -p'

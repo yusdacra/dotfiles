@@ -28,7 +28,7 @@ if [ -f "/tmp/dwm-status.pid" ]; then
 fi
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-#picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 sxhkd &
 $HOME/scripts/dwm-status.sh &
 

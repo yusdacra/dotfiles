@@ -4,7 +4,7 @@
 
 # terminal emulator
 alt + Return
-	kitty
+	alacritty
 
 # program launcher
 alt + {d, Tab}
@@ -22,7 +22,11 @@ alt + shift + p
 	mpc {toggle, prev, next, stop} && $HOME/scripts/dwm-status.sh
 
 alt + p
-	~/scripts/rofi-mpd.sh && $HOME/scripts/dwm-status.sh
+	~/scripts/rofi-mpd.sh -j && $HOME/scripts/dwm-status.sh
+
+# screenshot
+Print
+	scrot '%Y-%m-%d_%H-%M-%S_scrot.png' -e 'mv $f ~/Resimler/shots/'
 
 # make sxhkd reload its configuration files:
 alt + Escape

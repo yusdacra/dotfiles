@@ -10,3 +10,5 @@
 [alias]
 	st = status
 	cv = commit -S
+[commit]
+	gpgsign = true

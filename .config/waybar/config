@@ -1,17 +1,17 @@
 {
     "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (topbottomleftright)
+    "position": "top", // Waybar position (topbottomleftright)
     "height": 22, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces"],
-    "modules-center": ["sway/window"],
+    "modules-center": [],
     "modules-right": ["mpd", "pulseaudio", "clock"],
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
-        "format": "{stateIcon} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) | ",
+        "format": "[{stateIcon}] {elapsedTime:%M:%S}/{totalTime:%M:%S} | ",
         "format-disconnected": "Disconnected | ",
         "format-stopped": "Stopped | ",
         "unknown-tag": "N/A | ",

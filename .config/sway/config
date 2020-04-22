@@ -1,7 +1,7 @@
-include "$HOME/.cache/wal/colors-sway"
+include "~/.config/sway/base16-spacemacs.config"
 
 # Variable setting
-set $defaultmod Mod1
+set $defaultmod Mod4
 set $up Up
 set $down Down
 set $left Left
@@ -13,7 +13,10 @@ font pango:Monoid 9
 
 ########## Autolaunch ##########
 input * xkb_layout "tr"
-output "*" bg ~/Resimler/parsee.png fill
+output "*" bg ~/Downloads/761929.jpg fill
+input "7119:5:USB_Optical_Mouse" {
+    accel_profile flat
+}
 
 ########## Keybindings ##########
 #bindsym $defaultmod+Shift+s exec swaylock # Easier locking
@@ -44,7 +47,7 @@ bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mu
 floating_modifier $defaultmod
 
 # start a terminal
-bindsym $defaultmod+Return exec kitty
+bindsym $defaultmod+Return exec alacritty
 
 # kill focused window
 bindsym $defaultmod+q kill
@@ -134,8 +137,8 @@ bindsym $defaultmod+Shift+9 move container to workspace $ws9
 bindsym $defaultmod+Shift+0 move container to workspace $ws10
 
 # move container
-bindsym $defaultmod+z move workspace to output left
-bindsym $defaultmod+x move workspace to output right
+#bindsym $defaultmod+z move workspace to output left
+#bindsym $defaultmod+x move workspace to output right
 
 # reload the configuration file
 bindsym $defaultmod+Shift+c reload
@@ -173,7 +176,7 @@ bar {
 
 ########## Styling ##########
 
-client.focused $color0 $background $foreground $color7 $background
+client.focused $base07 $base01 $base05 $base07 $base01
 
 default_border none
 for_window [class="^.*"] border pixel 1
@@ -181,8 +184,8 @@ for_window [class="^.*"] border pixel 1
 hide_edge_borders smart_no_gaps
 smart_borders no_gaps
 smart_gaps off
-gaps inner 0
-gaps outer 0
+gaps inner 11
+gaps outer 6
 
 ########## Window management #########
 
