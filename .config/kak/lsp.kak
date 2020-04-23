@@ -6,4 +6,5 @@ hook global WinSetOption filetype=(rust|dart) %{
 hook -group make-rust global WinSetOption filetype=rust %[
         set-option window makecmd cargo
         set-option global compiler cargo
+        set-option global formatcmd 'cargo fmt'
 ]
