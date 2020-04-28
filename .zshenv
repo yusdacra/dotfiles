@@ -1,5 +1,5 @@
-export MOZ_ENABLE_WAYLAND=1
-export CHROME_EXECUTABLE=firefox-nightly # for flutter web support
+export MOZ_ENABLE_WAYLAND=1 # makes firefox use wayland on wayland
+export CHROME_EXECUTABLE=chromium # for flutter web support
 export ANDROID_SDK_ROOT="$HOME/Belgeler/AndroidSdk"
 export ANDROID_HOME="$HOME/Belgeler/AndroidSdk"
 export PATH="$PATH:$HOME/Belgeler/flutter/bin"

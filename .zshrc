@@ -24,7 +24,7 @@ ZSH_THEME="minimalist"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -33,10 +33,10 @@ ZSH_THEME="minimalist"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -68,7 +68,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast systemd colored-man-pages command-not-found per-directory-history tmux fzf cargo rust flutter thefuck)
+plugins=(gitfast colored-man-pages per-directory-history tmux fzf cargo rust flutter)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $ZSH/oh-my-zsh.sh
@@ -77,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=20000
-setopt autocd notify
+setopt notify autocd
 unsetopt beep extendedglob nomatch
 # Syntax highlighting (but fast)
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
