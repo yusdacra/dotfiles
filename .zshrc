@@ -84,3 +84,6 @@ source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.
 
 # Import aliases
 source ~/.aliases
+
+source ~/.local/bin/_absolute_files
+compdef _absolute_files mplay
