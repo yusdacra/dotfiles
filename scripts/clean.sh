@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 echo "Cleaning general stuff"
 if [ -x "$(command -v bleachbit)" ]; then
