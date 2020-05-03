@@ -81,6 +81,8 @@ setopt notify autocd
 unsetopt beep extendedglob nomatch
 # Syntax highlighting (but fast)
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# fish like autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # Import aliases
 source ~/.aliases
