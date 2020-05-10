@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ -f "/tmp/dwm-status.pid" ]; then
-    rm "/tmp/dwm-status.pid"
-fi
-
-exec 2>&1
-exec ~/scripts/dwm-status.sh

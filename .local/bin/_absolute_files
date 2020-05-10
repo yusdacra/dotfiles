@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-_absolute_files () {
-  local expansion=$PREFIX$SUFFIX; expansion=${(e)expansion}
-  if [[ "${expansion%%/#}" != "${expansion:a}" ]]; then
-    PREFIX="\$PWD/$PREFIX"
-  fi
-  _files "$@";
-}

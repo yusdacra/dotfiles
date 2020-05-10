@@ -1,9 +1,0 @@
-source "~/.config/kak/plugins.kak"
-source "~/.config/kak/lsp.kak"
-source "~/.config/kak/mappings.kak"
-
-alias global eum enter-user-mode
-alias global x write-all-quit
-
-colorscheme base16-spacemacs
-hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines }

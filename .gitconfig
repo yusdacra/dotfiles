@@ -9,7 +9,11 @@
 	required = true
 [alias]
 	st = status
-	cv = commit -S
+    ct = commit
+	co = checkout
+    pl = pull
+    ps = push
+    a = add
 [commit]
 	gpgsign = true
 [gpg]
