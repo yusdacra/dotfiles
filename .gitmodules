@@ -1,0 +1,6 @@
+[submodule ".config/kak"]
+	path = .config/kak
+	url = https://gitlab.com/yusdacra/kide.git
+[submodule "/home/yusuf/.emacs.d"]
+	path = /home/yusuf/.emacs.d
+	url = https://github.com/hlissner/doom-emacs
