@@ -1,6 +1,12 @@
-[submodule ".config/kak"]
-	path = .config/kak
-	url = https://gitlab.com/yusdacra/kide.git
 [submodule "/home/yusuf/.emacs.d"]
 	path = /home/yusuf/.emacs.d
 	url = https://github.com/hlissner/doom-emacs
+[submodule ".tmux-plugins/tmux-resurrect"]
+	path = .tmux-plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule ".tmux-plugins/tmux-continuum"]
+	path = .tmux-plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule ".config/kak"]
+	path = .config/kak
+	url = https://gitlab.com/yusdacra/kide
