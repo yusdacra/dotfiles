@@ -1,14 +1,19 @@
 alias ydl='youtube-dl --embed-thumbnail --extract-audio --audio-format mp3 --add-metadata'
+
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias btrfs-df='sudo btrfs fi usage /'
+alias hover-build-linux-appimage='sudo systemctl start docker && hover build linux-appimage && sudo systemctl stop docker'
+
+alias bat='bat -p --theme base16'
+alias cat='bat'
 alias ls='exa'
 alias la='exa --long --grid --git -a'
 alias ll='exa --long --grid --git'
 alias l='exa --grid'
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias btrfs-df='sudo btrfs fi usage /'
-alias hover-build-linux-appimage='sudo systemctl start docker && hover build linux-appimage && sudo systemctl stop docker'
-alias bat='bat -p --theme base16'
-alias cat='bat'
+
 alias nixos-list-generations='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
 alias nosrs='sudo nixos-rebuild switch'
 alias nosrb='sudo nixos-rebuild boot'
 alias noslg='nixos-list-generations'
+
+alias tmux="tmux new-session -d -s \>_ 2>/dev/null; tmux new-session -t \>_ \; set-option destroy-unattached"
