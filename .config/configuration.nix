@@ -114,7 +114,7 @@
     '';
     wrapperFeatures = {
       base = true;
-      gtk = true;
+      gtk = false;
     };
   };
   
@@ -144,16 +144,11 @@
     	set -g default-terminal 'tmux-256color'
     	set -ga terminal-overrides ',*256col*:Tc'
     	set -g status off
-    	run-shell ~/.tmux-plugins/tmux-resurrect/resurrect.tmux
-    	run-shell ~/.tmux-plugins/tmux-continuum/continuum.tmux
     ";
   };
 
   # Enable java jdk and jre
   programs.java.enable = true;
-
-  # Enable ccache
-  programs.ccache.enable = true;
 
   # Enable gnupg
   programs.gnupg.agent = {
@@ -209,12 +204,11 @@
     extraGroups = [ "wheel" "kvm" ];
     packages = with pkgs; [
         lutris steam steam-run wineWowPackages.staging # gaym shit
-        neofetch exa # cli shit
-        firefox-wayland # net shit
-        rustup godot # just develop things
+        neofetch exa
+        firefox-wayland
+        rustup 
 	cmus ffmpeg mpv python38Packages.youtube-dl-light playerctl
-	kak-lsp ripgrep bat shellcheck fzf universal-ctags socat gdb perl clang_10 # kide dependency stuff
-        yaru-theme
+	pandoc lynx kak-lsp ripgrep bat shellcheck fzf universal-ctags socat gdb perl clang_10 # kide dependency stuff
         lm_sensors virt-manager
     ];
     shell = pkgs.zsh;
