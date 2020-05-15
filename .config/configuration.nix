@@ -52,9 +52,11 @@
 
   services.earlyoom.enable = true;
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemuPackage = pkgs.qemu_kvm;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemuPackage = pkgs.qemu_kvm;
+    };
   };
   
   ########################################
@@ -69,10 +71,10 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
-    extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau libva ];
+    extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau libva vulkan-loader ];
     # 32bit for steam
     driSupport32Bit = true;
-    extraPackages32 = with pkgs.pkgsi686Linux; [ libvdpau-va-gl vaapiVdpau libva ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [ libvdpau-va-gl vaapiVdpau libva vulkan-loader ];
   };
   ########################################
 
@@ -150,6 +152,7 @@
   # Enable java jdk and jre
   programs.java.enable = true;
 
+
   # Enable gnupg
   programs.gnupg.agent = {
     enable = true;
@@ -185,7 +188,7 @@
   environment = {
     systemPackages = with pkgs; [
       wget curl git git-lfs
-      unzip unrar file mkpasswd
+      unzip unrar mkpasswd
       kakoune most htop
       ntfs3g
     ];
@@ -201,14 +204,14 @@
   users.users.yusuf = {
     isNormalUser = true;
     home = "/home/yusuf";
-    extraGroups = [ "wheel" "kvm" ];
+    extraGroups = [ "wheel" "kvm" "docker" ];
     packages = with pkgs; [
         lutris steam steam-run wineWowPackages.staging # gaym shit
-        neofetch exa
+        exa neofetch
         firefox-wayland
-        rustup 
+        rustup
 	cmus ffmpeg mpv python38Packages.youtube-dl-light playerctl
-	pandoc lynx kak-lsp ripgrep bat shellcheck fzf universal-ctags socat gdb perl clang_10 # kide dependency stuff
+	kak-lsp ripgrep bat shellcheck fzf universal-ctags socat gdb perl clang_10 # kide dependency stuff
         lm_sensors virt-manager
     ];
     shell = pkgs.zsh;
