@@ -49,7 +49,7 @@ set $br_violet #b891f5
 ### Output configuration
 #
 # Wallpaper
-output * bg ~/Resimler/wallpapers/761929.jpg fill
+#output * bg ~/Resimler/wallpapers/761929.jpg fill
 #
 # Example configuration:
 #

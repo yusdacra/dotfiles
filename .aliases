@@ -17,3 +17,5 @@ alias nosrb='sudo nixos-rebuild boot'
 alias noslg='nixos-list-generations'
 
 alias tmux="tmux new-session -d -s \>_ 2>/dev/null; tmux new-session -t \>_ \; set-option destroy-unattached"
+
+alias rember="kak -e gtd-jump-today ~/stuff.gtd"

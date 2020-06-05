@@ -1,11 +1,75 @@
-[gd_resource type="EditorSettings" format=2]
+[gd_resource type="EditorSettings" load_steps=13 format=2]
+
+[sub_resource type="InputEventKey" id=1]
+control = true
+command = true
+scancode = 78
+unicode = 78
+
+[sub_resource type="InputEventKey" id=2]
+scancode = 16777224
+unicode = 16777224
+
+[sub_resource type="InputEventKey" id=3]
+control = true
+command = true
+scancode = 68
+unicode = 68
+
+[sub_resource type="InputEventKey" id=4]
+alt = true
+scancode = 16777231
+unicode = 16777231
+
+[sub_resource type="InputEventKey" id=5]
+alt = true
+scancode = 16777233
+unicode = 16777233
+
+[sub_resource type="InputEventKey" id=6]
+alt = true
+scancode = 16777232
+unicode = 16777232
+
+[sub_resource type="InputEventKey" id=7]
+control = true
+command = true
+scancode = 16777234
+unicode = 16777234
+
+[sub_resource type="InputEventKey" id=8]
+control = true
+command = true
+scancode = 16777232
+unicode = 16777232
+
+[sub_resource type="InputEventKey" id=9]
+scancode = 16777248
+unicode = 16777248
+
+[sub_resource type="InputEventKey" id=10]
+alt = true
+scancode = 70
+unicode = 70
+
+[sub_resource type="InputEventKey" id=11]
+control = true
+command = true
+scancode = 72
+unicode = 72
+
+[sub_resource type="InputEventKey" id=12]
+alt = true
+scancode = 86
+unicode = 86
 
 [resource]
 interface/editor/code_font_size = 12
-interface/editor/code_font = "/home/yusuf/Belgeler/Monoid/Monoid-Regular.ttf"
+interface/editor/code_font = "/home/yusuf/.local/share/fonts/Monoid-Regular.ttf"
 interface/theme/preset = "Custom"
 interface/theme/base_color = Color( 0.121569, 0.12549, 0.133333, 1 )
 interface/theme/accent_color = Color( 0.176471, 0.584314, 0.454902, 1 )
+filesystem/file_dialog/show_hidden_files = true
 text_editor/theme/color_theme = "base16-spacemacs"
 text_editor/highlighting/symbol_color = Color( 0.639216, 0.639216, 0.639216, 1 )
 text_editor/highlighting/keyword_color = Color( 0.639216, 0.113725, 0.694118, 1 )
@@ -131,4 +195,5 @@ editors/3d_gizmos/gizmo_colors/joint_body_b = Color( 0.6, 0.9, 1, 1 )
 text_editor/highlighting/gdscript/function_definition_color = Color( 0.309804, 0.592157, 0.843137, 1 )
 text_editor/highlighting/gdscript/node_path_color = Color( 0.690196, 0.188235, 0.376471, 1 )
 text_editor/help/sort_functions_alphabetically = true
-projects/::home::yusuf::Belgeler::dev::neonment = "/home/yusuf/Belgeler/dev/neonment"
+projects/::home::yusuf::Belgeler::neonment = "/home/yusuf/Belgeler/neonment"
+shortcuts = [ "file_dialog/create_folder", SubResource( 1 ), "file_dialog/delete", SubResource( 2 ), "file_dialog/focus_path", SubResource( 3 ), "file_dialog/go_back", SubResource( 4 ), "file_dialog/go_forward", SubResource( 5 ), "file_dialog/go_up", SubResource( 6 ), "file_dialog/move_favorite_down", SubResource( 7 ), "file_dialog/move_favorite_up", SubResource( 8 ), "file_dialog/refresh", SubResource( 9 ), "file_dialog/toggle_favorite", SubResource( 10 ), "file_dialog/toggle_hidden_files", SubResource( 11 ), "file_dialog/toggle_mode", SubResource( 12 ) ]
