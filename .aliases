@@ -1,6 +1,8 @@
 alias ydl='youtube-dl --embed-thumbnail --extract-audio --audio-format mp3 --add-metadata'
 
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+DOTCONF='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config="${DOTCONF}"
+alias config-sync="${DOTCONF} add ~/rember && ${DOTCONF} commit -a -m 'sync on `date`' && ${DOTCONF} push"
 alias btrfs-df='sudo btrfs fi usage /'
 alias hover-build-linux-appimage='sudo systemctl start docker && hover build linux-appimage && sudo systemctl stop docker'
 
@@ -18,4 +20,4 @@ alias noslg='nixos-list-generations'
 
 alias tmux="tmux new-session -d -s \>_ 2>/dev/null; tmux new-session -t \>_ \; set-option destroy-unattached"
 
-alias rember="kak -e gtd-jump-today ~/stuff.gtd"
+alias rember="kak -e gtd-jump-today ~/rember/stuff`date '+-%m-%Y'`.gtd"
