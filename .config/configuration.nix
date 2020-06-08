@@ -61,7 +61,7 @@ in
     };
     shellAliases = {
         config = dotConf;
-        config-sync = "${dotConf} add ~/rember && ${dotConf} commit -a -m 'sync on `date`' && ${dotConf} push";
+        config-sync = "${dotConf} add ~/rember && ${dotConf} commit -a -m 'sync on $(date)' && ${dotConf} push";
         ydl = "youtube-dl --embed-thumbnail --extract-audio --audio-format mp3 --add-metadata";
         la = "exa --long --grid --git -a";
         ls = "exa";
