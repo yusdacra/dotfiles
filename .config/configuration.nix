@@ -24,11 +24,12 @@ in
 
   networking = {
     hostName = "yusuf-pc";
-    useDHCP = false;
     networkmanager = {
-      enable = true;
-      dns = "none"; # We use stubby (fuck everything else)
+        enable = true;
+        dns = "none";
     };
+    useDHCP = false;
+    interfaces.enp6s0.useDHCP = false;
   };
 
   i18n.defaultLocale = "tr_TR.UTF-8";
