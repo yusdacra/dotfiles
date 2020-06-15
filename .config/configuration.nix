@@ -2,7 +2,6 @@
 
 let
   dotConf = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
-
 in
 {
   imports =
@@ -25,11 +24,10 @@ in
   networking = {
     hostName = "yusuf-pc";
     networkmanager = {
-        enable = true;
-        dns = "none";
+      enable = true;
+      dns = "none"; # We use stubby
     };
     useDHCP = false;
-    interfaces.enp6s0.useDHCP = false;
   };
 
   i18n.defaultLocale = "tr_TR.UTF-8";
@@ -49,29 +47,38 @@ in
     };
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
   environment = {
     systemPackages = with pkgs; [
-      wget curl git git-lfs
-      unzip mkpasswd
+      curl git git-lfs
+      mkpasswd
       kakoune htop
-      ntfs3g compsize
+      ntfs3g
       profile-sync-daemon
+      lm_sensors
     ];
     variables = {
-        EDITOR = "kak";
+      EDITOR = "kak";
     };
     shellAliases = {
-        config = dotConf;
-        config-sync = "${dotConf} add ~/rember && ${dotConf} commit -a -m \"sync on `date`\" && ${dotConf} push";
-        ydl = "youtube-dl --embed-thumbnail --extract-audio --audio-format mp3 --add-metadata";
-        la = "exa --long --grid --git -a";
-        ls = "exa";
-        rember = "kak -e gtd-jump-today ~/rember/stuff`date '+-%m-%Y'`.gtd";
-        nixos-list-generations = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-        nosrs = "sudo nixos-rebuild switch";
-        nosrb = "sudo nixos-rebuild boot";
-        noslg = "nixos-list-generations";
-        tmux = "tmux new-session -d -s \>_ 2>/dev/null; tmux new-session -t \>_ \; set-option destroy-unattached";
+      cat = "bat";
+      config = dotConf;
+      config-sync = "${dotConf} add ~/rember && ${dotConf} commit -a -m \"sync on `date`\" && ${dotConf} push";
+      nixos-conf = "sudo kak /etc/nixos/configuration.nix";
+      nosce = "nixos-conf";
+      ydl = "youtube-dl --embed-thumbnail --extract-audio --audio-format mp3 --add-metadata";
+      la = "exa --long --grid --git -a";
+      ls = "exa";
+      rember = "kak -e gtd-jump-today ~/rember/stuff`date '+-%m-%Y'`.gtd";
+      nixos-list-generations = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+      nosrs = "sudo nixos-rebuild switch";
+      nosrb = "sudo nixos-rebuild boot";
+      noslg = "nixos-list-generations";
+      tmux = "tmux new-session -d -s \>_ 2>/dev/null; tmux new-session -t \>_ \; set-option destroy-unattached";
     };
   };
 
@@ -79,22 +86,17 @@ in
     sway = {
       enable = true;
       extraPackages = with pkgs; [
-        swaylock swayidle xwayland rofi alacritty wl-clipboard grim imv
+        swaylock swayidle xwayland rofi wl-clipboard grim imv
       ];
-      wrapperFeatures.base = true;
-      # Needs `wrapperFeatures.base = true`
-      extraSessionCommands = ''
-        export SDL_VIDEODRIVER=wayland
-        # Fix for some Java AWT applications (e.g. Android Studio),
-        # use this if they aren't displayed properly:
-        export _JAVA_AWT_WM_NONREPARENTING=1
-        export MOZ_ENABLE_WAYLAND=1
-      '';
     };
     zsh = {
       enable = true;
       autosuggestions.enable = true;
+      enableCompletion = true;
+      enableGlobalCompInit = true;
       syntaxHighlighting.enable = true;
+      histFile = "~/.zsh_history";
+      histSize = 10000;
       ohMyZsh = {
         enable = true;
         plugins = [ "colored-man-pages" "per-directory-history" ];
@@ -104,6 +106,11 @@ in
       	  if [ -z "$TMUX" ]; then
               tmux
       	  fi
+
+	  # ffmpeg-cut INPUT OUTPUT START_TIME DURATION
+      	  ffmpeg-cut () {
+              ffmpeg -ss $3 -i $1 -t $4 -c copy $2
+          }
       '';
       loginShellInit = ''
        	  if [ "$(tty)" = "/dev/tty1" ]; then
@@ -119,15 +126,15 @@ in
       newSession = true;
       shortcut = "a";
       extraConfig = "
-    	set -g default-terminal 'tmux-256color'
-    	set -ga terminal-overrides ',*256col*:Tc'
-    	set -g status off
+    	  set -g default-terminal 'xterm-256color'
+    	  set -ga terminal-overrides ',*256col*:Tc'
+    	  set -g status off
       ";
     };
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryFlavor = "gtk2";
+      pinentryFlavor = "tty";
     };
   };
 
@@ -136,14 +143,14 @@ in
       enable = true;
       roundRobinUpstreams = false;
       upstreamServers = ''
-        - address_data: 45.90.28.0
-          tls_auth_name: "75e43d.dns1.nextdns.io"
-        - address_data: 2a07:a8c0::0
-          tls_auth_name: "75e43d.dns1.nextdns.io"
-        - address_data: 45.90.30.0
-          tls_auth_name: "75e43d.dns2.nextdns.io"
-        - address_data: 2a07:a8c1::0
-          tls_auth_name: "75e43d.dns2.nextdns.io"
+          - address_data: 45.90.28.0
+            tls_auth_name: "75e43d.dns1.nextdns.io"
+          - address_data: 2a07:a8c0::0
+            tls_auth_name: "75e43d.dns1.nextdns.io"
+          - address_data: 45.90.30.0
+            tls_auth_name: "75e43d.dns2.nextdns.io"
+          - address_data: 2a07:a8c1::0
+            tls_auth_name: "75e43d.dns2.nextdns.io"
       '';
     };
     psd.enable = true;
@@ -156,14 +163,14 @@ in
       home = "/home/yusuf";
       extraGroups = [ "wheel" ];
       packages = with pkgs; [
+        alacritty
         exa neofetch
-        firefox-wayland spectral
-        musikcube ffmpeg mpv python38Packages.youtube-dl-light playerctl
+        firefox-wayland chromium spectral
+        musikcube ffmpeg mpv python38Packages.youtube-dl-light playerctl lmms krita
         kak-lsp ripgrep bat universal-ctags
         clang_10 llvmPackages.bintools
-    	lm_sensors
-    	nixFlakes
-    	rust-analyzer rustc cargo
+    	# nixFlakes
+    	rust-analyzer rustc cargo clippy rustfmt cargo-watch hyperfine
     	godot
       ];
       shell = pkgs.zsh;
