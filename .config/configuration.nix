@@ -167,7 +167,7 @@ in
       packages = with pkgs; [
         alacritty
         exa neofetch
-        firefox-wayland chromium spectral discord
+        firefox-wayland spectral
         musikcube ffmpeg mpv python38Packages.youtube-dl-light playerctl lmms krita
         kak-lsp ripgrep bat universal-ctags
         clang_10 llvmPackages.bintools
