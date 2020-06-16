@@ -4,6 +4,8 @@ let
   dotConf = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
 in
 {
+  nixpkgs.config.allowUnfree = true;
+    
   imports =
     [ 
       ./hardware-configuration.nix
@@ -165,7 +167,7 @@ in
       packages = with pkgs; [
         alacritty
         exa neofetch
-        firefox-wayland chromium spectral
+        firefox-wayland chromium spectral discord
         musikcube ffmpeg mpv python38Packages.youtube-dl-light playerctl lmms krita
         kak-lsp ripgrep bat universal-ctags
         clang_10 llvmPackages.bintools
