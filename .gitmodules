@@ -1,4 +1,0 @@
-[submodule ".config/kak"]
-	path = .config/kak
-	url = https://gitlab.com/yusdacra/kide.git
-	shallow = true

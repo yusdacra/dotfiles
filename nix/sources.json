@@ -1,0 +1,51 @@
+{
+    "crate2nix": {
+        "branch": "master",
+        "description": "nix build file generator for rust crates",
+        "homepage": "",
+        "owner": "kolloch",
+        "repo": "crate2nix",
+        "rev": "87a544222723693c81f3b4141d639ba9b5769e2e",
+        "sha256": "0rml8xy7b6qlx631wpa29yb8qjsilv55w6g5rqbqjyw22aqz4ppb",
+        "type": "tarball",
+        "url": "https://github.com/kolloch/crate2nix/archive/87a544222723693c81f3b4141d639ba9b5769e2e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "homeManager": {
+        "branch": "master",
+        "description": "Manage a user environment using Nix",
+        "homepage": "https://rycee.gitlab.io/home-manager/",
+        "owner": "rycee",
+        "repo": "home-manager",
+        "rev": "1f174f668109765183f96b43d56ee24ab02c1c05",
+        "sha256": "06ba3nxkzva9q6dxzymyy62x75kf1qf7y8x711jwjravgda14bsq",
+        "type": "tarball",
+        "url": "https://github.com/rycee/home-manager/archive/1f174f668109765183f96b43d56ee24ab02c1c05.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "kide": {
+        "branch": "master",
+        "description": "An opinionated configuration for kakoune.",
+        "homepage": "https://gitlab.com/yusdacra/kide",
+        "owner": "yusdacra",
+        "ref": "master",
+        "repo": "https://github.com/yusdacra/kide.git",
+        "rev": "8bdfeb305ca0897f0939e20642c06ad929a40c8f",
+        "sha256": "0cfjm2n7prkmrrdyw1044i3h21j600gcnlib5qc357p11yas577y",
+        "type": "git",
+        "url": "https://github.com/yusdacra/kide.git",
+        "url_template": "https://github.com/yusdacra/kide.git"
+    },
+    "nur": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "0ba0bacfb170574615c792577cea9187d9e22ddc",
+        "sha256": "0225r5cd2c782l4wvih1rb2vpm57zw7cmwz1045mnv3s33avyqsp",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/0ba0bacfb170574615c792577cea9187d9e22ddc.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
