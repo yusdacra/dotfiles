@@ -26,7 +26,10 @@ in {
 
   nixpkgs.config = {
     allowUnfree = true;
-    packageOverrides = pkgs: { inherit nur; };
+    packageOverrides = pkgs: {
+      inherit nur;
+      nix = pkgs.nixUnstable;
+    };
   };
 
   imports =

@@ -32,6 +32,7 @@
         "repo": "https://github.com/yusdacra/kide.git",
         "rev": "8bdfeb305ca0897f0939e20642c06ad929a40c8f",
         "sha256": "0cfjm2n7prkmrrdyw1044i3h21j600gcnlib5qc357p11yas577y",
+        "submodules": true,
         "type": "git",
         "url": "https://github.com/yusdacra/kide.git",
         "url_template": "https://github.com/yusdacra/kide.git"
