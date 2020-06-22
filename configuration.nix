@@ -3,7 +3,6 @@
 let
   # Functions used in config
   addIf = x: y: if x then y else null;
-  dotConf = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
 
   # Import sources
   sources = import ./nix/sources.nix { };
@@ -17,6 +16,11 @@ let
   nivGithubToken = builtins.readFile ./nix/token;
 
   # Options
+  editorName = "kakoune";
+  editorBinName = "kak";
+  editorPkg = pkgs."${editorName}";
+  editor = "${editorPkg}/bin/${editorBinName}";
+
   enable32Bit = false;
   useNextDns = true;
   nextDnsId = "75e43d";
@@ -109,26 +113,28 @@ in {
       lm_sensors
     ];
     variables = {
-      EDITOR = "kak";
+      EDITOR = editor;
       GITHUB_TOKEN = nivGithubToken;
     };
   };
 
+  virtualisation.docker.enable = true;
+
   programs = {
     zsh = {
       shellAliases = {
-        cat = "bat"; # The cat died :cry:
+        cat = "bat -pp"; # The cat died :cry:
         la = "exa --long --grid --git -a";
         ls = "exa";
         l = "ls";
         ydl = "youtube-dl -x --embed-metadata";
 
-        config = dotConf;
-        config-sync = ''
-          ${dotConf} add ~/rember && ${dotConf} commit -a -m "sync on `date`" && ${dotConf} push'';
-        rember = "kak -e gtd-jump-today ~/rember/stuff`date '+-%m-%Y'`.gtd";
+        rember = if editorBinName == "kak" then
+          "${editor} -e gtd-jump-today ~/rember/stuff`date '+-%m-%Y'`.gtd"
+        else
+          "${editor} ~/rember/stuff`date '+-%m-%Y'`.gtd";
 
-        nixos-conf = "$EDITOR /etc/nixos/configuration.nix";
+        nixos-conf = "${editor} /etc/nixos/configuration.nix";
         nixos-list-generations =
           "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
         nosrs = "sudo nixos-rebuild switch";
@@ -140,6 +146,7 @@ in {
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;
+      enableBashCompletion = true;
       ohMyZsh = {
         enable = true;
         plugins = [ "colored-man-pages" "per-directory-history" ];
@@ -160,7 +167,7 @@ in {
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryFlavor = "tty";
+      pinentryFlavor = "gtk2";
     };
   };
 
@@ -187,7 +194,7 @@ in {
     users."${userName}" = {
       isNormalUser = true;
       home = "/home/${userName}";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" ];
       shell = zsh;
       hashedPassword =
         "$6$0L/hdI/a$KPa9Hzd/k6Z3PcIuHuseqIcUE1.YjrPk2yUOLL3HdENKt01WxRd9LBadn6P5O6nWXVCH134ur1rvHmfgou7Gl/";
@@ -338,8 +345,11 @@ in {
           nixfmt
           niv
           crate2nix
+          rust-analyzer
           rustup
           kakoune
+          filezilla
+          godot
         ];
 
         programs = {
