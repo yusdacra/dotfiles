@@ -208,8 +208,6 @@ in {
     useUserPackages = true;
     users."${userName}" = { pkgs, ... }:
       let
-        withDef = x: pkgs.lib.mkOptionDefault { } // x;
-
         githubUsername = "yusdacra";
 
         font = "Monoid Tight";
@@ -227,26 +225,39 @@ in {
             "f315e6086da7462ef81712f88cdbc60b2328f5aa80310d2b126ffe69d37be463";
         };
 
-        vomsColor = x: y: z: {
-          main = x;
-          sub = y;
-          accent = z;
+        colorScheme = {
+          normal = {
+            black = "252525";
+            red = "ed4a46";
+            green = "70b433";
+            yellow = "dbb32d";
+            blue = "368aeb";
+            magenta = "eb6eb7";
+            cyan = "3fc5b7";
+            white = "777777";
+          };
+          bright = {
+            black = "3b3b3b";
+            red = "ff5e56";
+            green = "83c746";
+            yellow = "efc541";
+            blue = "4f9cfe";
+            magenta = "ff81ca";
+            cyan = "56d8c9";
+            white = "dedede";
+          };
         };
 
-        pikameeColors = vomsColor "ffeeb2" "273846" "40bcaf";
-        tomoshikaColors = vomsColor "ff807e" "bcecf1" "ffe47a";
-        monoeColors = vomsColor "3e4f65" "dae1ea" "ee707d";
-
-        bgColor = pikameeColors.sub;
-        fgColor = monoeColors.sub;
-        acColor = pikameeColors.main;
-        acColor2 = tomoshikaColors.main;
+        bgColor = "181818";
+        fgColor = "b9b9b9";
+        acColor = colorScheme.bright.red;
+        acColor2 = colorScheme.normal.yellow;
 
         # sway attrs reused
         focusedWorkspace = {
-          background = "#${acColor}";
-          border = "#${acColor}";
-          text = "#${bgColor}";
+          background = "#${bgColor}";
+          border = "#${bgColor}";
+          text = "#${acColor}";
         };
         activeWorkspace = {
           background = "#${bgColor}";
@@ -259,9 +270,16 @@ in {
           text = "#${fgColor}";
         };
         urgentWorkspace = {
-          background = "#${acColor2}";
-          border = "#${acColor2}";
-          text = "#${bgColor}";
+          background = "#${bgColor}";
+          border = "#${bgColor}";
+          text = "#${acColor2}";
+        };
+        addInd = x: y: {
+          background = x.background;
+          border = x.border;
+          childBorder = x.border;
+          text = x.text;
+          indicator = y;
         };
         fonts = [ "${font} 9" ];
       in {
@@ -279,16 +297,18 @@ in {
               command = "swaybar";
               inherit fonts;
               position = "top";
+              mode = "invisible";
               extraConfig =
                 "status_command while date +'%H:%M'; do sleep 1m; done";
             }];
             colors = {
               background = "#${bgColor}";
-              focused = withDef focusedWorkspace;
-              focusedInactive = withDef inactiveWorkspace;
-              unfocused = withDef activeWorkspace;
-              urgent = withDef urgentWorkspace;
+              focused = addInd focusedWorkspace "#2e9ef4";
+              focusedInactive = addInd inactiveWorkspace "#2e9ef4";
+              unfocused = addInd activeWorkspace "#2e9ef4";
+              urgent = addInd urgentWorkspace "#2e9ef4";
             };
+            gaps.smartBorders = "on";
             menu = "${pkgs.rofi}/bin/rofi -show drun | swaymsg --";
             modifier = "Mod4";
             terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -337,6 +357,7 @@ in {
           mpv
           musikcube
           playerctl
+          krita
           exa
           neofetch
           hyperfine
@@ -364,6 +385,26 @@ in {
                 primary = {
                   background = "0x${bgColor}";
                   foreground = "0x${fgColor}";
+                };
+                normal = {
+                  black = "0x${colorScheme.normal.black}";
+                  red = "0x${colorScheme.normal.red}";
+                  green = "0x${colorScheme.normal.green}";
+                  yellow = "0x${colorScheme.normal.yellow}";
+                  blue = "0x${colorScheme.normal.blue}";
+                  magenta = "0x${colorScheme.normal.magenta}";
+                  cyan = "0x${colorScheme.normal.cyan}";
+                  white = "0x${colorScheme.normal.white}";
+                };
+                bright = {
+                  black = "0x${colorScheme.bright.black}";
+                  red = "0x${colorScheme.bright.red}";
+                  green = "0x${colorScheme.bright.green}";
+                  yellow = "0x${colorScheme.bright.yellow}";
+                  blue = "0x${colorScheme.bright.blue}";
+                  magenta = "0x${colorScheme.bright.magenta}";
+                  cyan = "0x${colorScheme.bright.cyan}";
+                  white = "0x${colorScheme.bright.white}";
                 };
               };
             };
@@ -439,8 +480,8 @@ in {
                   foreground = "#${fgColor}";
                   backgroundAlt = "#${bgColor}";
                   highlight = {
-                    background = "#${acColor}";
-                    foreground = "#${bgColor}";
+                    background = "#${bgColor}";
+                    foreground = "#${acColor}";
                   };
                 };
               };
